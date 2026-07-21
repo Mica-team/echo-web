@@ -45,3 +45,9 @@ pre{color:#62ff62;font-size:1.1rem;white-space:pre-wrap}
 .future{
     border-left:5px solid #4da3ff;
 }
+.card{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+}
