@@ -32,7 +32,7 @@ btn.onclick = async ()=>{
     },100);
 
     landing.style.display="none";
-    boot.classList.remove("hidden");
+    boot.style.display = "flex";
 
     terminal.innerHTML="";
 
