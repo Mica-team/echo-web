@@ -1,51 +1,62 @@
-const bootLines = [
-    "Initializing Echo...",
+const steps = [
+    "Powering Systems...",
     "Loading AI Core...",
     "Connecting Bluetooth...",
-    "Starting Systems...",
-    "Ready!"
+    "Initializing Motion System...",
+    "Loading Echo Services...",
+    "System Ready."
 ];
 
 const btn = document.getElementById("startBtn");
-const land = document.getElementById("landing");
+const landing = document.getElementById("landing");
 const boot = document.getElementById("boot");
 const about = document.getElementById("about");
+const terminal = document.getElementById("terminal");
+const bar = document.getElementById("bar");
+const percent = document.getElementById("percent");
 const music = document.getElementById("bgMusic");
 
 about.style.display = "none";
 
-btn.onclick = async () => {
+btn.onclick = async ()=>{
 
-    music.volume = 0.4;
+    music.volume = 0;
     music.play().catch(()=>{});
 
-    land.style.display = "none";
+    let fade = setInterval(()=>{
+        if(music.volume < 0.4){
+            music.volume += 0.02;
+        }else{
+            clearInterval(fade);
+        }
+    },100);
+
+    landing.style.display="none";
     boot.classList.remove("hidden");
 
-    const terminal = document.getElementById("terminal");
-    terminal.textContent = "";
+    terminal.innerHTML="";
 
-    for(const line of bootLines){
-        terminal.textContent += line + "\n";
-        await new Promise(r=>setTimeout(r,900));
+    for(let i=0;i<steps.length;i++){
+
+        terminal.innerHTML += "> " + steps[i] + "<br>";
+
+        let p = Math.round(((i+1)/steps.length)*100);
+
+        bar.style.width = p + "%";
+        percent.innerHTML = p + "%";
+
+        await new Promise(r=>setTimeout(r,1000));
     }
 
-    boot.style.display = "none";
-    about.style.display = "flex";
+    terminal.innerHTML += "<br><span style='color:white;'>ACCESS GRANTED</span>";
 
-    document.querySelectorAll(".card").forEach(card=>{
-        card.classList.add("hidden-card");
+    await new Promise(r=>setTimeout(r,1500));
+
+    boot.style.display="none";
+    about.style.display="flex";
+
+    about.scrollIntoView({
+        behavior:"smooth"
     });
 
-    const observer = new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-            if(entry.isIntersecting){
-                entry.target.classList.add("show-card");
-            }
-        });
-    });
-
-    document.querySelectorAll(".card").forEach(card=>{
-        observer.observe(card);
-    });
 };
