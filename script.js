@@ -16,47 +16,48 @@ const bar = document.getElementById("bar");
 const percent = document.getElementById("percent");
 const music = document.getElementById("bgMusic");
 
+// Hide sections on startup
+boot.style.display = "none";
 about.style.display = "none";
 
-btn.onclick = async ()=>{
+btn.addEventListener("click", async () => {
 
+    // Fade in music
     music.volume = 0;
-    music.play().catch(()=>{});
+    music.play().catch(() => {});
 
-    let fade = setInterval(()=>{
-        if(music.volume < 0.4){
-            music.volume += 0.02;
-        }else{
+    let volume = 0;
+    const fade = setInterval(() => {
+        volume += 0.02;
+        if (volume >= 0.4) {
+            volume = 0.4;
             clearInterval(fade);
         }
-    },100);
+        music.volume = volume;
+    }, 100);
 
-    landing.style.display="none";
+    // Hide landing
+    landing.style.display = "none";
+
+    // Show boot screen
     boot.style.display = "flex";
 
-    terminal.innerHTML="";
+    terminal.innerHTML = "";
+    bar.style.width = "0%";
+    percent.textContent = "0%";
 
-    for(let i=0;i<steps.length;i++){
+    for (let i = 0; i < steps.length; i++) {
 
-        terminal.innerHTML += "> " + steps[i] + "<br>";
+        terminal.innerHTML += `> ${steps[i]}<br>`;
 
-        let p = Math.round(((i+1)/steps.length)*100);
+        const progress = Math.round(((i + 1) / steps.length) * 100);
 
-        bar.style.width = p + "%";
-        percent.innerHTML = p + "%";
+        bar.style.width = progress + "%";
+        percent.textContent = progress + "%";
 
-        await new Promise(r=>setTimeout(r,1000));
+        await new Promise(resolve => setTimeout(resolve, 1000));
     }
 
-    terminal.innerHTML += "<br><span style='color:white;'>ACCESS GRANTED</span>";
+    terminal.innerHTML += "<br><span style='color:#ffffff;'>ACCESS GRANTED</span>";
 
-    await new Promise(r=>setTimeout(r,1500));
-
-    boot.style.display="none";
-    about.style.display="flex";
-
-    about.scrollIntoView({
-        behavior:"smooth"
-    });
-
-};
+   
