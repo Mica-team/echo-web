@@ -17,27 +17,35 @@ about.style.display = "none";
 btn.onclick = async () => {
 
     music.volume = 0.4;
-    music.play().catch(() => {});
+    music.play().catch(()=>{});
 
     land.style.display = "none";
-
     boot.classList.remove("hidden");
 
     const terminal = document.getElementById("terminal");
     terminal.textContent = "";
 
-    for (const line of bootLines) {
+    for(const line of bootLines){
         terminal.textContent += line + "\n";
-        await new Promise(r => setTimeout(r, 900));
+        await new Promise(r=>setTimeout(r,900));
     }
-
-    await new Promise(r => setTimeout(r, 800));
 
     boot.style.display = "none";
     about.style.display = "flex";
 
-    about.scrollIntoView({
-        behavior: "smooth"
+    document.querySelectorAll(".card").forEach(card=>{
+        card.classList.add("hidden-card");
     });
 
+    const observer = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add("show-card");
+            }
+        });
+    });
+
+    document.querySelectorAll(".card").forEach(card=>{
+        observer.observe(card);
+    });
 };
