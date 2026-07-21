@@ -1,0 +1,6 @@
+body{margin:0;background:#000;color:#fff;font-family:Arial,sans-serif}
+#landing,#boot,#about{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.logo{width:180px}.hidden{display:none}
+h1{text-shadow:0 0 18px #4da3ff;font-size:4rem}
+button{padding:15px 40px;font-size:1.2rem;border:none;border-radius:10px;cursor:pointer}
+pre{color:#62ff62;font-size:1.1rem;white-space:pre-wrap}
