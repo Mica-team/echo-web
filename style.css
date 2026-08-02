@@ -89,12 +89,13 @@ button:hover{
 }
 
 .boot-logo{
-
-    width:95px;
-
-    margin-bottom:20px;
-
+    width:75px;
+    height:75px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 12px;
     animation:bootFloat 2s ease-in-out infinite;
+}
 
 }
 
