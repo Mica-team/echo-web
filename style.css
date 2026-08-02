@@ -1,3 +1,7 @@
+/* ===========================
+   General
+=========================== */
+
 body {
     margin: 0;
     background: #050505;
@@ -6,7 +10,9 @@ body {
     text-align: center;
 }
 
-/* Landing & Boot Screen */
+/* ===========================
+   Landing & Boot
+=========================== */
 
 #landing,
 #boot {
@@ -23,6 +29,9 @@ body {
 
 button {
     padding: 14px 36px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 #boot {
@@ -37,7 +46,9 @@ pre {
     text-align: left;
 }
 
-/* Sections */
+/* ===========================
+   Sections
+=========================== */
 
 section {
     padding: 80px 10%;
@@ -51,10 +62,11 @@ section {
     border-radius: 12px;
 }
 
-/* Source Code Section */
+/* ===========================
+   Source Code
+=========================== */
 
 #source {
-    padding: 70px 20px;
     text-align: center;
 }
 
@@ -65,11 +77,11 @@ section {
 }
 
 .source-img {
-    width: 260px;
+    width: 220px;
     border-radius: 18px;
     cursor: pointer;
-    transition: transform 0.3s;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: .3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
 .source-img:hover {
@@ -81,13 +93,55 @@ section {
     margin-top: 20px;
     padding: 14px 28px;
     background: #5865F2;
-    color: #fff;
+    color: white;
     text-decoration: none;
-    font-weight: bold;
     border-radius: 12px;
-    transition: background 0.3s;
+    font-weight: bold;
+    transition: .3s;
 }
 
 .github-btn:hover {
-    background: #4752c4;
-        }
+    background: #4752C4;
+}
+
+/* ===========================
+   Discord
+=========================== */
+
+#community {
+    text-align: center;
+}
+
+#community p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.discord-img {
+    width: 220px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+.discord-img:hover {
+    transform: scale(1.05);
+}
+
+.discord-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: #5865F2;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.discord-btn:hover {
+    background: #4752C4;
+    }
