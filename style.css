@@ -2,12 +2,22 @@
    General
 =========================== */
 
-body {
-    margin: 0;
-    background: #050505;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    text-align: center;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    overflow-x:hidden;
 }
 
 /* ===========================
@@ -15,133 +25,284 @@ body {
 =========================== */
 
 #landing,
-#boot {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#boot{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
-.logo {
-    width: 170px;
+.logo{
+    width:170px;
+    transition:.4s;
 }
 
-button {
-    padding: 14px 36px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+.logo:hover{
+    transform:scale(1.05);
 }
 
-#boot {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: #000;
+button{
+    padding:14px 36px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
 }
 
-pre {
-    color: #00ff88;
-    text-align: left;
+button:hover{
+    transform:translateY(-3px);
+}
+
+#boot{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#000;
+    z-index:999;
+}
+
+.box{
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(15px);
+}
+
+pre{
+    color:#00ff88;
+    text-align:left;
 }
 
 /* ===========================
    Sections
 =========================== */
 
-section {
-    padding: 80px 10%;
+section{
+    padding:90px 10%;
 }
 
-.card {
-    max-width: 500px;
-    margin: 15px auto;
-    padding: 18px;
-    background: #111;
-    border-radius: 12px;
+h2{
+    margin-bottom:25px;
+    font-size:34px;
 }
 
-/* ===========================
-   Source Code
-=========================== */
-
-#source {
-    text-align: center;
-}
-
-#source p {
-    max-width: 700px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-}
-
-.source-img {
-    width: 220px;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: .3s;
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-.source-img:hover {
-    transform: scale(1.05);
-}
-
-.github-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 14px 28px;
-    background: #5865F2;
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: bold;
-    transition: .3s;
-}
-
-.github-btn:hover {
-    background: #4752C4;
+p{
+    line-height:1.7;
+    color:#d6d6d6;
 }
 
 /* ===========================
-   Discord
+   Cards
 =========================== */
 
-#community {
-    text-align: center;
+.card{
+    max-width:520px;
+    margin:18px auto;
+    padding:20px;
+
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    transition:.35s;
 }
 
-#community p {
-    max-width: 700px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
+.card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#5865F2;
+
+    box-shadow:
+    0 0 25px rgba(88,101,242,.25);
+
 }
 
-.discord-img {
-    width: 220px;
-    border-radius: 18px;
-    cursor: pointer;
-    transition: .3s;
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+/* ===========================
+   Source
+=========================== */
+
+#source{
+    text-align:center;
+    transition:.4s;
+    border-radius:25px;
 }
 
-.discord-img:hover {
-    transform: scale(1.05);
+#source p{
+    max-width:700px;
+    margin:0 auto 30px;
 }
 
-.discord-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 14px 28px;
-    background: #5865F2;
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: bold;
-    transition: .3s;
+.source-img{
+
+    width:230px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+
 }
 
-.discord-btn:hover {
-    background: #4752C4;
-    }
+.source-img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ===========================
+   Community
+=========================== */
+
+#community{
+    text-align:center;
+    transition:.4s;
+    border-radius:25px;
+}
+
+#community p{
+    max-width:700px;
+    margin:0 auto 30px;
+}
+
+.discord-img{
+
+    width:230px;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.discord-img:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.github-btn,
+.discord-btn{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:14px 32px;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    transition:
+    transform .3s,
+    box-shadow .35s,
+    background .35s,
+    border .35s;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.25);
+
+}
+
+.github-btn:hover,
+.discord-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ===========================
+   Active Glow
+=========================== */
+
+.glow-active{
+
+    background:rgba(88,101,242,.18);
+
+    border:1px solid rgba(88,101,242,.45);
+
+    box-shadow:
+    0 0 20px rgba(88,101,242,.45),
+    0 0 45px rgba(88,101,242,.25),
+    0 10px 35px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+   Active Section Glow
+=========================== */
+
+#source.glow-active,
+#community.glow-active{
+
+    background:rgba(255,255,255,.03);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(88,101,242,.18);
+
+    box-shadow:
+    0 0 40px rgba(88,101,242,.15);
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+.logo{
+    width:140px;
+}
+
+h2{
+    font-size:28px;
+}
+
+.source-img,
+.discord-img{
+    width:180px;
+}
+
+.github-btn,
+.discord-btn{
+    padding:12px 24px;
+}
+
+.card{
+    margin:15px 0;
+}
+
+   }
