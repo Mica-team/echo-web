@@ -60,20 +60,129 @@ button:hover{
     display:none;
     position:fixed;
     inset:0;
-    background:#000;
+    background:#050505;
     z-index:999;
+    justify-content:center;
+    align-items:center;
+    transition:.5s;
 }
 
-.box{
-    padding:30px;
-    border-radius:20px;
+.boot-box{
+
+    width:min(90%,520px);
+
+    padding:35px;
+
+    border-radius:24px;
+
     background:rgba(255,255,255,.05);
-    backdrop-filter:blur(15px);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(88,101,242,.18);
+
+    box-shadow:
+        0 0 35px rgba(88,101,242,.18),
+        0 15px 40px rgba(0,0,0,.45);
+
 }
 
-pre{
-    color:#00ff88;
-    text-align:left;
+.boot-logo{
+
+    width:95px;
+
+    margin-bottom:20px;
+
+    animation:bootFloat 2s ease-in-out infinite;
+
+}
+
+#bootTitle{
+
+    margin:0;
+
+    font-size:34px;
+
+}
+
+#bootStage{
+
+    margin-top:10px;
+
+    color:#9ca3af;
+
+    font-size:15px;
+
+}
+
+#bootTask{
+
+    margin:28px 0 18px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.progress{
+
+    width:100%;
+
+    height:14px;
+
+    background:#161616;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+#progressFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #5865F2,
+        #7B8CFF
+    );
+
+    border-radius:999px;
+
+    box-shadow:
+        0 0 18px rgba(88,101,242,.55);
+
+}
+
+#progressText{
+
+    margin-top:18px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+}
+
+@keyframes bootFloat{
+
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+
 }
 
 /* ===========================
