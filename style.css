@@ -1,40 +1,93 @@
-body{margin:0;background:#050505;color:#fff;font-family:Arial;text-align:center}#landing,#boot{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}.logo{width:170px}button{padding:14px 36px}#boot{display:none;background:#000;position:fixed;inset:0}pre{color:#00ff88;text-align:left}section{padding:80px 10%}.card{background:#111;margin:15px auto;padding:18px;border-radius:12px;max-width:500px}
-#source{
-    text-align:center;
-    padding:70px 20px;
+body {
+    margin: 0;
+    background: #050505;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
-#source p{
-    max-width:700px;
-    margin:auto;
-    margin-bottom:30px;
-    line-height:1.6;
+/* Landing & Boot Screen */
+
+#landing,
+#boot {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.source-img{
-    width:260px;
-    border-radius:18px;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 10px 30px rgba(0,0,0,.3);
+.logo {
+    width: 170px;
 }
 
-.source-img:hover{
-    transform:scale(1.05);
+button {
+    padding: 14px 36px;
 }
 
-.github-btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:14px 28px;
-    background:#5865F2;
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    font-weight:bold;
-    transition:0.3s;
+#boot {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
 }
 
-.github-btn:hover{
-    background:#4752c4;
+pre {
+    color: #00ff88;
+    text-align: left;
 }
+
+/* Sections */
+
+section {
+    padding: 80px 10%;
+}
+
+.card {
+    max-width: 500px;
+    margin: 15px auto;
+    padding: 18px;
+    background: #111;
+    border-radius: 12px;
+}
+
+/* Source Code Section */
+
+#source {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+#source p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.source-img {
+    width: 260px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.source-img:hover {
+    transform: scale(1.05);
+}
+
+.github-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: #5865F2;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: background 0.3s;
+}
+
+.github-btn:hover {
+    background: #4752c4;
+        }
