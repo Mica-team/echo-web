@@ -34,3 +34,38 @@ b.onclick = async () => {
         behavior: 'smooth'
     });
 };
+
+/* ===========================
+   Section Glow Effect
+=========================== */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.target.id === "source") {
+
+            document
+                .querySelector(".github-btn")
+                .classList
+                .toggle("glow-active", entry.isIntersecting);
+
+        }
+
+        if (entry.target.id === "community") {
+
+            document
+                .querySelector(".discord-btn")
+                .classList
+                .toggle("glow-active", entry.isIntersecting);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.5
+});
+
+observer.observe(document.getElementById("source"));
+observer.observe(document.getElementById("community"));
