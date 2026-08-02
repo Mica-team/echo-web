@@ -1,42 +1,70 @@
-const lines = [
-    "Powering Systems...",
-    "Loading AI Core...",
-    "Connecting Bluetooth...",
-    "System Ready."
+const bootSteps = [
+    "Powering Systems",
+    "Initializing Display",
+    "Launching Bluetooth",
+    "Connecting Wi-Fi",
+    "Loading AI Core",
+    "Initializing Motion",
+    "Loading Face Engine",
+    "Verifying Security",
+    "Starting Echo Services",
+    "Launching Interface"
 ];
 
 const b = document.getElementById("startBtn");
 const l = document.getElementById("landing");
 const boot = document.getElementById("boot");
-const t = document.getElementById("terminal");
-const a = document.getElementById("about");
+const about = document.getElementById("about");
+
+const stage = document.getElementById("bootStage");
+const task = document.getElementById("bootTask");
+const fill = document.getElementById("progressFill");
+const percent = document.getElementById("progressText");
 
 b.onclick = async () => {
 
-    const m = document.getElementById("bgMusic");
-    m.play().catch(() => {});
+    const music = document.getElementById("bgMusic");
+    music.play().catch(() => {});
 
     l.style.display = "none";
     boot.style.display = "flex";
 
-    t.textContent = "";
+    for(let i=0;i<bootSteps.length;i++){
 
-    for (const x of lines) {
+        stage.textContent = `Stage ${i+1} / ${bootSteps.length}`;
+        task.textContent = bootSteps[i];
 
-        t.textContent += x + "\n";
+        fill.style.width = "0%";
+        percent.textContent = "0%";
 
-        await new Promise(r => setTimeout(r, 900));
+        for(let p=0;p<=100;p++){
+
+            fill.style.width = p + "%";
+            percent.textContent = p + "%";
+
+            await new Promise(r=>setTimeout(r,10));
+
+        }
+
+        await new Promise(r=>setTimeout(r,120));
 
     }
 
-    await new Promise(r => setTimeout(r, 800));
+    stage.textContent = "✓ Boot Complete";
+    task.textContent = "Loading Echo...";
+
+    await new Promise(r=>setTimeout(r,700));
+
+    boot.style.opacity = "0";
+
+    await new Promise(r=>setTimeout(r,500));
 
     boot.style.display = "none";
 
-    a.style.display = "block";
+    about.style.display = "block";
 
-    a.scrollIntoView({
-        behavior: "smooth"
+    about.scrollIntoView({
+        behavior:"smooth"
     });
 
 };
@@ -45,38 +73,34 @@ b.onclick = async () => {
    Section Glow
 =========================== */
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries)=>{
 
-    entries.forEach(entry => {
+    entries.forEach(entry=>{
 
-        /* ---------- Source ---------- */
-
-        if (entry.target.id === "source") {
+        if(entry.target.id==="source"){
 
             document.querySelector(".github-btn")
-                .classList.toggle("glow-active", entry.isIntersecting);
+                .classList.toggle("glow-active",entry.isIntersecting);
 
             document.getElementById("source")
-                .classList.toggle("glow-active", entry.isIntersecting);
+                .classList.toggle("glow-active",entry.isIntersecting);
 
         }
 
-        /* ---------- Community ---------- */
-
-        if (entry.target.id === "community") {
+        if(entry.target.id==="community"){
 
             document.querySelector(".discord-btn")
-                .classList.toggle("glow-active", entry.isIntersecting);
+                .classList.toggle("glow-active",entry.isIntersecting);
 
             document.getElementById("community")
-                .classList.toggle("glow-active", entry.isIntersecting);
+                .classList.toggle("glow-active",entry.isIntersecting);
 
         }
 
     });
 
-}, {
-    threshold: 0.55
+},{
+    threshold:0.55
 });
 
 observer.observe(document.getElementById("source"));
