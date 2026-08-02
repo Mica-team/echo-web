@@ -3,3 +3,6 @@
 
 A website made by Mica team for our project echo.
 It will contain all updates related to echo.
+
+# Updates
+you will find every update on this website from start to end everything even some important updates such as new function, even the project card which will contain all functions done to doing to in future, everything.
