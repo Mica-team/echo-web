@@ -125,6 +125,63 @@ p{
 }
 
 /* ===========================
+   Progress Status Cards
+=========================== */
+
+.card{
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:6px;
+    height:100%;
+    border-radius:10px;
+}
+
+.done::before{
+    background:#22c55e;
+}
+
+.progress::before{
+    background:#facc15;
+}
+
+.future::before{
+    background:#ef4444;
+}
+
+/* Glow */
+
+.done{
+    border:1px solid rgba(34,197,94,.25);
+}
+
+.done:hover{
+    box-shadow:0 0 20px rgba(34,197,94,.35);
+}
+
+.progress{
+    border:1px solid rgba(250,204,21,.25);
+}
+
+.progress:hover{
+    box-shadow:0 0 20px rgba(250,204,21,.35);
+}
+
+.future{
+    border:1px solid rgba(239,68,68,.25);
+}
+
+.future:hover{
+    box-shadow:0 0 20px rgba(239,68,68,.35);
+}
+
+/* ===========================
    Source
 =========================== */
 
