@@ -105,3 +105,5 @@ const observer = new IntersectionObserver((entries)=>{
 
 observer.observe(document.getElementById("source"));
 observer.observe(document.getElementById("community"));
+
+const mb=document.getElementById("menuBtn");const sm=document.getElementById("sideMenu");if(mb)mb.onclick=()=>sm.classList.toggle("open");
