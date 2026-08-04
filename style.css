@@ -480,3 +480,5 @@ h2{
 }
 
    }
+
+#topbar{position:fixed;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;background:rgba(255,255,255,.08);padding:10px 16px;border-radius:16px;backdrop-filter:blur(10px);z-index:1000}#menuBtn{background:none;color:#fff;font-size:24px}#sideMenu{position:fixed;top:0;right:-280px;width:260px;height:100%;background:#111;padding:20px;transition:.3s;z-index:1001}#sideMenu.open{right:0}#sideMenu a{display:block;color:#fff;text-decoration:none;margin:14px 0}
