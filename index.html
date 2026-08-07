@@ -1,19 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Echo</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<nav id="topbar"><div>🏠 Home</div><button id="menuBtn">•••</button></nav>
-<div id="sideMenu"><h2>Echo</h2><a href="#">🏠 Home</a><a href="#" id="settingsOpen">⚙️ Settings</a><a href="#" id="gamesOpen">🎮 Mini Games</a><a href="https://github.com/Mica-team/Echo-software" target="_blank">📂 Source Code</a><a href="https://discord.gg/Cxua7zuAw5" target="_blank">💬 Discord</a></div>
 
+    <!-- Navigation -->
+    <nav id="topbar" aria-label="Main navigation">
+        <button id="homeBtn" class="home-btn" type="button">🏠 <span>Home</span></button>
+        <button id="menuBtn" class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">•••</button>
+    </nav>
+
+    <!-- Menu backdrop -->
+    <div id="menuBackdrop" aria-hidden="true"></div>
+
+    <!-- Side Menu -->
+    <aside id="sideMenu" aria-hidden="true">
+        <div class="menu-panel main-panel" id="mainPanel">
+            <div class="menu-header">
+                <h2>Echo</h2>
+                <button id="closeMenu" class="close-btn" type="button" aria-label="Close menu">×</button>
+            </div>
+
+            <p class="menu-subtitle">Explore Echo</p>
+
+            <button class="menu-item" id="settingsOpen" type="button">⚙️ <span>Settings</span></button>
+            <button class="menu-item" id="gamesOpen" type="button">🎮 <span>Mini Games</span></button>
+
+            <div class="menu-divider"></div>
+
+            <a class="menu-item" href="https://github.com/Mica-team/Echo-software" target="_blank" rel="noopener">📂 <span>Source Code</span></a>
+            <a class="menu-item" href="https://discord.gg/Cxua7zuAw5" target="_blank" rel="noopener">💬 <span>Discord</span></a>
+
+            <div class="menu-divider"></div>
+            <p class="menu-footer">Echo Web • Mica Team</p>
+        </div>
+
+        <!-- Settings Panel -->
+        <div class="menu-panel sub-panel" id="settingsPanel" hidden>
+            <div class="menu-header">
+                <h2>Settings</h2>
+                <button class="close-btn panel-close" type="button" aria-label="Close menu">×</button>
+            </div>
+
+            <div class="setting-group">
+                <h3>Appearance</h3>
+                <button class="setting-option" data-theme="dark" type="button">🌙 <span>Dark Mode</span></button>
+                <button class="setting-option" data-theme="light" type="button">☀️ <span>Light Mode</span></button>
+                <button class="setting-option" data-theme="system" type="button">🖥️ <span>System Theme</span></button>
+            </div>
+
+            <div class="setting-group">
+                <h3>Experience</h3>
+                <label class="toggle-row">
+                    <span>🎵 Background Music</span>
+                    <input id="musicToggle" type="checkbox">
+                </label>
+                <label class="toggle-row">
+                    <span>✨ Reduce Animations</span>
+                    <input id="motionToggle" type="checkbox">
+                </label>
+            </div>
+        </div>
+
+        <!-- Mini Games Panel -->
+        <div class="menu-panel sub-panel" id="gamesPanel" hidden>
+            <div class="menu-header">
+                <h2>Mini Games</h2>
+                <button class="close-btn panel-close" type="button" aria-label="Close menu">×</button>
+            </div>
+
+            <p class="game-description">Charge the Echo Core before the timer runs out.</p>
+
+            <div class="game-card">
+                <div id="gameCore" class="game-core" role="button" tabindex="0" aria-label="Echo Core">ECHO</div>
+                <div class="game-stats">
+                    <span>Charge: <strong id="gameScore">0</strong>/10</span>
+                    <span>Time: <strong id="gameTime">10</strong>s</span>
+                </div>
+                <button id="gameStart" class="game-start" type="button">Start Game</button>
+                <p id="gameMessage" class="game-message">Ready?</p>
+            </div>
+        </div>
+    </aside>
 
     <!-- Background Music -->
     <audio id="bgMusic" loop>
@@ -22,173 +94,63 @@
 
     <!-- Landing Page -->
     <section id="landing">
-
         <img src="assets/logo.png" alt="Echo Logo" class="logo">
-
         <h1>Echo</h1>
-
         <p>Building the future of personal robotics.</p>
-
-        <button id="startBtn">
-            START
-        </button>
-
+        <button id="startBtn">START</button>
     </section>
 
     <!-- Boot Screen -->
-<div id="boot">
-
-    <div class="boot-box">
-
-        <img src="assets/logo.png"
-             class="boot-logo"
-             alt="Echo Logo">
-
-        <h2 id="bootTitle">
-            Echo
-        </h2>
-
-        <p id="bootStage">
-            Stage 1 / 10
-        </p>
-
-        <h3 id="bootTask">
-            Powering Systems
-        </h3>
-
-        <div class="progress">
-
-            <div id="progressFill"></div>
-
+    <div id="boot">
+        <div class="boot-box">
+            <img src="assets/logo.png" class="boot-logo" alt="Echo Logo">
+            <h2 id="bootTitle">Echo</h2>
+            <p id="bootStage">Stage 1 / 10</p>
+            <h3 id="bootTask">Powering Systems</h3>
+            <div class="progress"><div id="progressFill"></div></div>
+            <p id="progressText">0%</p>
         </div>
-
-        <p id="progressText">
-            0%
-        </p>
-
     </div>
-
-</div>
 
     <!-- About -->
     <section id="about" style="display: none;">
-
         <h2>About Echo</h2>
-
-        <p>
-            Echo is an open-source AI companion robot designed to be more than just a machine.
-            It is being developed to move, interact, assist, and learn alongside its user.
-            Combining robotics, artificial intelligence, and modern software,
-            Echo aims to become a personal companion capable of understanding commands,
-            communicating naturally, and performing useful tasks.
-        </p>
-
-        <p>
-            The project is built around the ESP32 platform and is paired with a dedicated
-            mobile application for wireless control, monitoring, and future AI-powered features.
-            As development continues, Echo will gain advanced capabilities including voice
-            interaction, autonomous navigation, computer vision, environmental awareness,
-            and smart home integration.
-        </p>
-
-        <p>
-            Echo is currently under active development as a long-term project.
-            Every version brings new hardware improvements, smarter software,
-            and more intelligent behaviors.
-            The ultimate goal is to create an affordable, open,
-            and customizable AI robot that anyone can build,
-            modify, and improve.
-        </p>
-
+        <p>Echo is an open-source AI companion robot designed to be more than just a machine. It is being developed to move, interact, assist, and learn alongside its user. Combining robotics, artificial intelligence, and modern software, Echo aims to become a personal companion capable of understanding commands, communicating naturally, and performing useful tasks.</p>
+        <p>The project is built around the ESP32 platform and is paired with a dedicated mobile application for wireless control, monitoring, and future AI-powered features. As development continues, Echo will gain advanced capabilities including voice interaction, autonomous navigation, computer vision, environmental awareness, and smart home integration.</p>
+        <p>Echo is currently under active development as a long-term project. Every version brings new hardware improvements, smarter software, and more intelligent behaviors. The ultimate goal is to create an affordable, open, and customizable AI robot that anyone can build, modify, and improve.</p>
     </section>
 
     <!-- Development Progress -->
     <section id="progress">
-
         <h2>Development Progress</h2>
-
-        <div class="card done">
-    ✅ Project Started
-</div>
-
-<div class="card progress">
-    🚧 Android App
-</div>
-
-<div class="card progress">
-    🚧 Hardware
-</div>
-
-<div class="card future">
-    ⏳ AI Assistant
-</div>
-
+        <div class="card done">✅ Project Started</div>
+        <div class="card progress">🚧 Android App</div>
+        <div class="card progress">🚧 Hardware</div>
+        <div class="card future">⏳ AI Assistant</div>
     </section>
 
     <!-- Source Code -->
     <section id="source">
-
         <h2>Source Code</h2>
-
-        <p>
-            Echo is completely open source.
-            You can explore the source code, contribute,
-            report issues, or build your own version.
-        </p>
-
-        <a href="https://github.com/Mica-team/Echo-software" target="_blank">
-
-            <img src="assets/source-code.png"
-                 alt="See Source Code"
-                 class="source-img">
-
+        <p>Echo is completely open source. You can explore the source code, contribute, report issues, or build your own version.</p>
+        <a href="https://github.com/Mica-team/Echo-software" target="_blank" rel="noopener">
+            <img src="assets/source-code.png" alt="See Source Code" class="source-img">
         </a>
-
         <br><br>
-
-        <a class="github-btn glow-btn"
-           href="https://github.com/Mica-team/Echo-software"
-           target="_blank">
-
-            📂 See Source Code
-
-        </a>
-
+        <a class="github-btn glow-btn" href="https://github.com/Mica-team/Echo-software" target="_blank" rel="noopener">📂 See Source Code</a>
     </section>
 
     <!-- Community -->
     <section id="community">
-
         <h2>Community</h2>
-
-        <p>
-            Need help? Found a bug? Want to suggest a feature?
-            Join our Discord community to report bugs,
-            discuss ideas, and help improve Echo.
-        </p>
-
-        <a href="https://discord.gg/Cxua7zuAw5" target="_blank">
-
-            <img src="assets/discord.png"
-                 alt="Join Discord"
-                 class="discord-img">
-
+        <p>Need help? Found a bug? Want to suggest a feature? Join our Discord community to report bugs, discuss ideas, and help improve Echo.</p>
+        <a href="https://discord.gg/Cxua7zuAw5" target="_blank" rel="noopener">
+            <img src="assets/discord.png" alt="Join Discord" class="discord-img">
         </a>
-
         <br><br>
-
-        <a class="discord-btn glow-btn"
-           href="https://discord.gg/Cxua7zuAw5"
-           target="_blank">
-
-            💬 Join Discord
-
-        </a>
-
+        <a class="discord-btn glow-btn" href="https://discord.gg/Cxua7zuAw5" target="_blank" rel="noopener">💬 Join Discord</a>
     </section>
 
     <script src="script.js"></script>
-
 </body>
-
-            </html>
+</html>
